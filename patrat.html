@@ -1,0 +1,73 @@
+<html>
+
+<head>
+<script>
+// clasa patrat
+function square(width)
+{
+ // lungimea laturilor
+ this.width = width;
+
+ // creeaza patratul
+ this.create = function()
+ {
+ if(!document.number_of_squares)
+ {
+ document.number_of_squares = 1;
+ }
+ else
+ {
+ document.number_of_squares++;
+ }
+ this.id = document.number_of_squares;
+ }
+
+ // deseneaza patratul intr-o anumita culoare
+ this.draw = function(color)
+ {
+ document.write('<div id="square-' + this.id + '" style="background: ' + color + '; width: ' + this.width + 'px; height: ' + this.width + 'px"></div>');
+ }
+
+ // schimba culoarea
+ this.changeColor = function(color)
+ {
+ document.getElementById('square-' + this.id).style.backgroundColor = color;
+ }
+
+ this.create();
+ }
+
+s = new square(100);
+s.draw('darkred');
+
+</script>
+</head>
+
+
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html
+
+
+
+

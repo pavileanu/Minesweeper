@@ -1,0 +1,104 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="minesweeper.css">
+	<script src="nume.js" type="text/javascript" language="javascript"></script>
+	<script src="matriceajutor.js" type="text/javascript" language="javascript"></script>
+	<script src="testare.js" type="text/javascript" language="javascript"></script>
+	<script src="portile.js" type="text/javascript" language="javascript"></script>
+    <script src="mines.js" type="text/javascript" language="javascript"></script>
+    <script src="matrix.js" type="text/javascript" language="javascript"></script>
+	<script>
+
+		var a;
+		var allmines;
+		var e=0,s,p,ti,reapel=1;
+		var CULOARE_BUTON = "FF9999";
+		var CULOARE_TD= "#FFCC00"; 
+
+		allmines=new mines();
+		allmines.creare();
+
+function stergere()
+{
+	var corp=document.getElementsByTagName("body")[0];
+	var lucian=document.getElementById("pelin");
+
+	var anka=document.getElementById("anka");
+	var razvan=document.getElementById("razvan");
+	var zein=document.getElementById("zein");
+	var pi=document.getElementById("pi");
+	corp.removeChild(lucian);
+	corp.removeChild(anka);
+	corp.removeChild(razvan);
+	corp.removeChild(zein); 
+	corp.removeChild(pi);
+
+	if(q==2)
+		oraid=setInterval('timp()',1000);
+
+	min=0;
+	sec=0;
+	q=0;
+	reapel=1;
+	ora=new Date();
+	allmines.creare();
+}
+
+function init()
+{
+	var cheptea=document.getElementById("cheptea");
+	cheptea.xx=100;
+	cheptea.yy=200;
+
+	cheptea.style.top=a.xx;
+	cheptea.style.left=a.yy;
+
+}
+
+function miscare()
+{
+	var cheptea=document.getElementById("cheptea");
+
+	cheptea.xx=cheptea.xx+10;
+	cheptea.yy=cheptea.yy+10;
+	cheptea.style.top=cheptea.xx;
+	cheptea.style.left=cheptea.yy;
+
+	setTimeout("miscare()",1000);
+}
+
+function talent()
+{ 
+	var gat=document.getElementById("gata");
+	var strin=new String("Bine v-am gasit la joc!");
+	strin=strin.fontcolor("green");
+	strin=strin.blink();
+	gat.innerHTML=strin;
+}
+
+function fane(eve)
+{	
+	var gogu=document.getElementById("gigi");
+	var xx=eve.clientX;
+	var yy=eve.clientY;
+	gogu.style.top=yy+5;
+	gogu.style.left=xx+5;
+}
+
+</script>
+
+</head>
+
+<body onload="mines();umplere();init();talent()" onmousemove="fane(event)">
+
+	<div id="butonstart" style="text-align:center;" >
+		<input id="menu" type="button" value="Start" onClick="ora=new Date();       oraid=setInterval('timp()',1000);     ;createTabel()">
+		<br>
+		<input  id="menu1" type="button" value="Settings" onclick="deschideportile()">
+	</div>
+	<img  src="bomba.jpg"  id="cheptea"    style="position:relative;  width:40px; height:40px;"   onClick="miscare()">
+
+	<p   id="gata"  style="text-align:center; font-size:200%;" > </p>
+	<input  id="gigi" style="position:absolute"       type="button"  value="Misca">
+</body>
+</html>

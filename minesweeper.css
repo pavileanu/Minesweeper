@@ -1,0 +1,57 @@
+table{
+	text-align:center;
+	border-collapse:collapse;}
+
+button{
+	height: 50px; width: 50px;}
+
+body{
+background-color:#00FFFF;}
+	
+input[type="text"]{
+	width:120px;
+	height:50px;
+	margin-left:25%;
+	margin-top:1%;
+	display:block;
+	text-align:center;
+	font-size:200%;
+}
+
+#menu{
+	margin-top:10%;
+	text-align:center;
+	width:250px;
+	height:100;}
+
+#pi{
+	background-color: green;}
+
+#zein{
+	position:absolute;
+	top:125px;
+	right:92%;
+	width:100px;
+	height:100;
+	background-color: red;}
+
+#menu1{
+	margin-top:10%;
+	text-align:center;
+	width:250px;
+	height:100;}
+
+td{
+	font-size:20px;}
+
+#butonstart{
+	background-image: url("smiley.gif");
+	background-repeat:repeat-x;}
+
+#num{
+	width:120px;
+	height:50px;
+
+	display:block;
+	text-align:center;
+	font-size:200%;	}

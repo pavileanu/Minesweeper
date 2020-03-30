@@ -1,0 +1,5 @@
+
+body {background-color:#b0c4de;}
+td { background-color: FFCC00; }
+background-image:'smiley.gif'
+background="smiley.gif"

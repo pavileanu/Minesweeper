@@ -1,0 +1,37 @@
+/*   if(i!=0)                                       //3 elemente de deasupra
+    {if(b[i-1][j]<10)
+         lucian.rows[i-1].cells[j].innerHTML=" "+b[i-1][j]+" ";
+     if(b[i-1][j-1]<10)
+         lucian.rows[i-1].cells[j-1].innerHTML=" "+b[i-1][j-1]+" ";
+     if(b[i-1][j+1]<10)
+         lucian.rows[i-1].cells[j+1].innerHTML=" "+b[i-1][j+1]+" ";}
+
+
+                  if(j!=0) 
+          {if(b[i-1][j-1]<10)                                             //3 elemente stanga
+                lucian.rows[i-1].cells[j-1].innerHTML=" "+b[i-1][j-1]+" ";
+
+           if(b[i][j-1]<10)
+                  lucian.rows[i].cells[j-1].innerHTML=" "+b[i][j-1]+" ";
+ 
+            if(b[i+1][j-1]<10)
+                    lucian.rows[i+1].cells[j-1].innerHTML=" "+b[i+1][j-1]+" ";}
+
+            if(i!=9)                                          //3 elemente jos
+          { if(b[i+1][j-1]<10)
+      lucian.rows[i+1].cells[j-1].innerHTML=" "+b[i+1][j-1]+" ";
+           if(b[i+1][j]<10)
+       lucian.rows[i+1].cells[j].innerHTML=" "+b[i+1][j]+" ";
+
+              if(b[i+1][j+1]<10)
+         lucian.rows[i+1].cells[j+1].innerHTML=" "+b[i+1][j+1]+" ";}
+
+
+             if(j!=9)                        //3 elemente dreapta
+         { if(b[i-1][j+1]<10)
+          lucian.rows[i-1].cells[j+1].innerHTML=" "+b[i-1][j+1]+" ";
+
+              if(b[i][j+1]<10)
+          lucian.rows[i].cells[j+1].innerHTML=" "+b[i][j+1]+" ";
+             if(b[i+1][j+1]<10)
+          lucian.rows[i+1].cells[j+1].innerHTML=" "+b[i+1][j+1]+" ";*/
