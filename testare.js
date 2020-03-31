@@ -1,28 +1,4 @@
 var d,h,g;
-function test()
-{	
-	var s=0,ok=1;
-	var p=document.getElementById("gameTimer");
-	for(i=0;i<10;i++)
-		for(j=0;j<10;j++)
-
-	//if(a[i][j]==2)
-	//s++;
-
-	if(a[i][j]==0)
-		ok=0;
-
-	if(ok==1&&q!=2)
-	{alert("Ati trecut jocu in "+p.value);
-	allmines.proba();
-	clearInterval(oraid);
-	//setTimeout("removeGame();startGame()",5000);
-	tim=1;
-	//removeGame();
-	//startGame();
-	}
-
-}
 
 var sec=0,min=0,tim=1;
 

@@ -6,9 +6,14 @@ function startGame(){
 	createPauseGameButton();
 	createMainMenuButton();
 
-	fillTableData();
+	allmines = new mines();
+	
+	createDataTable(allmines.createMinesTable());
 
-	createTable();}
+	createUITable();
+
+
+}
 
 function removeGame(){
 
@@ -33,7 +38,7 @@ function removeGame(){
 	q=0;
 	reapel=1;
 	ora=new Date();
-	allmines.creare();
+	//allmines.createMinesTable();
 }
 
 function removeMainMenu(){
