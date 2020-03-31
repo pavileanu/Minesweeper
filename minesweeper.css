@@ -18,16 +18,16 @@ input[type="text"]{
 	font-size:200%;
 }
 
-#menu{
+#startButton{
 	margin-top:10%;
 	text-align:center;
 	width:250px;
 	height:100;}
 
-#pi{
+#pauseGame{
 	background-color: green;}
 
-#zein{
+#mainMenu{
 	position:absolute;
 	top:125px;
 	right:92%;
@@ -35,7 +35,7 @@ input[type="text"]{
 	height:100;
 	background-color: red;}
 
-#menu1{
+#settingsButton{
 	margin-top:10%;
 	text-align:center;
 	width:250px;
@@ -44,7 +44,7 @@ input[type="text"]{
 td{
 	font-size:20px;}
 
-#butonstart{
+#menu{
 	background-image: url("smiley.gif");
 	background-repeat:repeat-x;}
 

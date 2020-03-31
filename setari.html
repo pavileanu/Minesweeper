@@ -6,25 +6,25 @@
 <script>
 
 function culoare()
-{var corp=window.opener.document.getElementsByTagName("body")[0];
-//var corp=document.getElementsByTagName("body")[0];
+{var body=window.opener.document.getElementsByTagName("body")[0];
+//var body=document.getElementsByTagName("body")[0];
 var a1=document.getElementById("colorbody1");
 var a2=document.getElementById("colorbody2");
 var a3=document.getElementById("colorbody3");
 if(a1.checked)
-{corp.style.backgroundColor=a1.value;
+{body.style.backgroundColor=a1.value;
 a2.checked=false;
 a3.checked=false;
 
 }
 
-else if(a2.checked)
-{corp.style.backgroundColor=a2.value;
+else if(a2.checked)``
+{body.style.backgroundColor=a2.value;
 a1.checked=false;
 a3.checked=false;
 }
 else if(a3.checked)
-{corp.style.backgroundColor=a3.value;
+{body.style.backgroundColor=a3.value;
 
 a1.checked=false;
 a2.checked=false;}}

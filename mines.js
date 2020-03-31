@@ -24,9 +24,9 @@ function mines(){
 					this.second[i]=y;}}
 
 	mines.prototype.proba=function(){
-		var imagine=document.getElementById("cheptea");
-		var lucian=document.getElementById("pelin");
+		var imagine=document.getElementById("bombImage");
+		var matrixTable=document.getElementById("matrixTable");
 		for(i=0;i<11;i++)
-		lucian.rows[allmines.first[i]].cells[allmines.second[i]].innerHTML='<img  src="bomba.jpg"  id="cheptea" style="position:relative;  width:50px; height:50px;">';}}
+		matrixTable.rows[allmines.first[i]].cells[allmines.second[i]].innerHTML='<img  src="bomba.jpg"  id="bombImage" style="position:relative;  width:50px; height:50px;">';}}
 
 
