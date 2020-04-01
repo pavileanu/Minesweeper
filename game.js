@@ -2,7 +2,7 @@ function startGame(){
 	removeMainMenu();
 
 	createNewGameButton();
-	createGameTimer();
+	createGameTimerTextBox();
 	createPauseGameButton();
 	createMainMenuButton();
 
@@ -12,7 +12,9 @@ function startGame(){
 
 	createUITable();
 
-
+	startingDate=new Date();       
+	timerId=setInterval('setTimer()',1000);
+	isGamePaused=0;
 }
 
 function removeGame(){
@@ -30,15 +32,6 @@ function removeGame(){
 	body.removeChild(mainMenu); 
 	body.removeChild(pauseGame);
 
-	if(q==2)
-		oraid=setInterval('timp()',1000);
-
-	min=0;
-	sec=0;
-	q=0;
-	reapel=1;
-	ora=new Date();
-	//allmines.createMinesTable();
 }
 
 function removeMainMenu(){
@@ -48,9 +41,6 @@ function removeMainMenu(){
 	var menu=document.getElementById("menu");
 	if(menu != null)
 		body.removeChild(menu);
-	var welcomeMessageBox=document.getElementById("welcomeMessageBox");
-	if(welcomeMessageBox != null)
-		body.removeChild(welcomeMessageBox);
 }
 
 
@@ -64,7 +54,7 @@ function createNewGameButton(){
 	body.appendChild(x);
 }
 
-function createGameTimer(){
+function createGameTimerTextBox(){
 	var body=document.getElementsByTagName("body")[0];
 	var x=document.createElement("input");
 	x.setAttribute("type","text");
@@ -79,7 +69,7 @@ function createPauseGameButton(){
 	stopClock.setAttribute("type","button");
 	stopClock.setAttribute("id","pauseGame");
 	stopClock.setAttribute("value","Pause Game");
-	stopClock.setAttribute("onclick","stopare()");
+	stopClock.setAttribute("onclick","pauseGame()");
 	body.appendChild(stopClock);
 }
 

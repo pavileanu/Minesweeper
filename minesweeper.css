@@ -55,3 +55,21 @@ td{
 	display:block;
 	text-align:center;
 	font-size:200%;	}
+
+#settings{
+	display: none;
+}
+
+.td-settings{
+	background-color:white;
+}
+
+.table-settings{
+	background-img:"ciocolata.jpg";
+	border-color:#ff0000 #0000ff;
+	background-size:80px 60px;
+	text-align:right;   
+	padding:60px;    
+	color:FF3399; 
+	font-size:20px;
+}

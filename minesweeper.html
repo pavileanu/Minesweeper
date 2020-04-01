@@ -1,51 +1,67 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="minesweeper.css">
-	<script src="nume.js" type="text/javascript" language="javascript"></script>
-	<script src="matriceajutor.js" type="text/javascript" language="javascript"></script>
-	<script src="testare.js" type="text/javascript" language="javascript"></script>
-	<script src="portile.js" type="text/javascript" language="javascript"></script>
+	<script src="home.js" type="text/javascript" language="javascript"></script>
+	<script src="gameTimer.js" type="text/javascript" language="javascript"></script>
     <script src="mines.js" type="text/javascript" language="javascript"></script>
     <script src="matrix.js" type="text/javascript" language="javascript"></script>
     <script src="game.js" type="text/javascript" language="javascript"></script>
-	<script>
-
-		var matrixTable;
-		var allmines;
-		var e=0,s,p,ti,reapel=1;
-		var CULOARE_BUTON = "FF9999";
-		var CULOARE_TD= "#FFCC00"; 
-
-function createWelcomeMessageLayer(){ 
-	var welcomeMessageBox=document.getElementById("welcomeMessageBox");
-	var welcomeMessageText=new String("Bine v-am gasit la joc!");
-	welcomeMessageText=welcomeMessageText.fontcolor("green");
-	welcomeMessageText=welcomeMessageText.blink();
-	welcomeMessageBox.innerHTML=welcomeMessageText;
-}
-
-function createMouseCursor(event){	
-	var mouseCursor=document.getElementById("mouseCursor");
-	var xx=eve.clientX;
-	var yy=eve.clientY;
-	mouseCursor.style.top=yy+5;
-	mouseCursor.style.left=xx+5;
-}
-
-</script>
-
+    <script src="settings.js" type="text/javascript" language="javascript"></script>
 </head>
 
 <body onload="createWelcomeMessageLayer()">
 	<!--onmousemove="createMouseCursor(event)"-->
 
 	<div id="menu" style="text-align:center;" >
-		<input id="startButton" type="button" value="Start" onClick="ora=new Date();       oraid=setInterval('timp()',1000);     ;startGame()">
+		<input id="startButton" type="button" value="Start" onClick="startGame()">
 		<br>
-		<input  id="settingsButton" type="button" value="Settings" onclick="deschideportile()">
+		<input  id="settingsButton" type="button" value="Settings" onclick="openSettings()">
+		<br>
+		<p  id="welcomeMessageBox"  style="text-align:center; font-size:200%;" > </p>
 	</div>
 
-	<p  id="welcomeMessageBox"  style="text-align:center; font-size:200%;" > </p>
 	<!--<input  id="mouseCursor" style="position:absolute"       type="button"  value="Misca">-->
+	<div id="settings">
+		<table class="table-settings">
+			<tr>
+				<td>
+					Background color
+				</td>
+				<td>
+					<input type="checkbox" id="colorBody1" value="#00FFFF">  Teal        
+					<hr>
+					<input type="checkbox" id="colorBody2" value="grey">  Grey            
+					<hr>
+					<input type="checkbox" id="colorBody3" value="orange"> Orange          
+					<hr>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Culoare Butoane
+				</td>
+				<td>
+					<select id="buttonColor">
+						<option value="buttonface">Grey</option>
+						<option value="#9933FF">Mauve</option>
+						<option value="#660033">Dark Brown</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Culoare Tabel
+				</td>
+				<td>
+					<input type="radio" name="tableColor" value="#FFCC00">Dark Yellow<br>
+					<input type="radio" name="tableColor" value="#996633">Brown<br>
+					<input type="radio" name="tableColor" value="rgb(255,255,0)">Yellow<br>
+				</td>
+			</tr>
+		</table>
+		<input type="button" onClick="setBodyColor();setButtonColor();setTableColor();settingsToMainMenu()" value="Submit">
+		<input type="button" onClick="settingsToMainMenu()" value="Main Menu">
+	</div>
+
 </body>
 </html>

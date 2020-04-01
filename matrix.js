@@ -45,8 +45,8 @@ function cellMatrixClicked(ev, x, y){
   if(currentCellValue < 0){
     matrixTableUI.rows[x].cells[y].innerHTML='<img  src="bomba.jpg"  id="bombImage" style="position:relative;  width:50px; height:50px;">';
     alert("noob!");
-    allmines.proba();
-    clearInterval(oraid);
+    allmines.show();
+    clearInterval(timerId);
     setTimeout("removeGame();startGame()",5000);
     tim=1;
   }
@@ -90,8 +90,8 @@ function winTest()
 
   if(winTestFlag){
     alert("Ati trecut jocu in " + gameTimeBox.value);
-    allmines.proba();
-    clearInterval(oraid);
+    allmines.show();
+    clearInterval(timerId);
 
     tim=1;
   }

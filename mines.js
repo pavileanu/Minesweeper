@@ -1,7 +1,7 @@
 function mines(){
 	
 	this.createMinesTable=function(){
-		var mineTable = new Array(10);
+		mineTable = new Array(10);
 		for(i=0;i<10;i++){
 			mineTable[i] = new Array(10);
 			for(j=0;j<10;j++)
@@ -16,10 +16,12 @@ function mines(){
 	}
 
 
-	mines.prototype.proba=function(){
+	mines.prototype.show=function(){
 		var matrixTable=document.getElementById("matrixTable");
-		//for(i=0;i<11;i++)
-		//matrixTable.rows[allmines.first[i]].cells[allmines.second[i]].innerHTML='<img  src="bomba.jpg"  id="bombImage" style="position:relative;  width:50px; height:50px;">';
+		for(i=0;i<10;i++)
+		for(j=0;j<10;j++)
+			if(mineTable[i][j]==1)
+			matrixTable.rows[i].cells[j].innerHTML='<img  src="bomba.jpg"  id="bombImage" style="position:relative;  width:50px; height:50px;">';
 	}
 }
 
