@@ -1,5 +1,5 @@
 var matrixTable, mineTable, allmines;
-var isGamePaused=0;
+var isGamePaused=0, timerId;
 var CULOARE_BUTON = "FF9999";
 var CULOARE_TD= "#FFCC00"; 
 

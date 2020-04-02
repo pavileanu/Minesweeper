@@ -58,14 +58,16 @@ td{
 
 #settings{
 	display: none;
+	background-image:url("ciocolata.jpg");
+	text-align: center;
 }
 
-.td-settings{
+.table-settings td{
 	background-color:white;
 }
 
 .table-settings{
-	background-img:"ciocolata.jpg";
+	display:inline;
 	border-color:#ff0000 #0000ff;
 	background-size:80px 60px;
 	text-align:right;   

@@ -43,6 +43,22 @@ function removeMainMenu(){
 		body.removeChild(menu);
 }
 
+function winTest()
+{ 
+  var winTestFlag=1;
+  var gameTimeBox=document.getElementById("gameTimer");
+  for(i=0;i<10;i++)
+    for(j=0;j<10;j++)
+      if(matrixTable[i][j] != -1 && matrixTable[i][j] != 7)
+        winTestFlag=0;
+
+  if(winTestFlag){
+    alert("Ati trecut jocu in " + gameTimeBox.value);
+    allmines.show();
+    clearInterval(timerId);
+  }
+}
+
 
 function createNewGameButton(){
 	var body=document.getElementsByTagName("body")[0];

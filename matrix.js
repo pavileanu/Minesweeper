@@ -47,8 +47,8 @@ function cellMatrixClicked(ev, x, y){
     alert("noob!");
     allmines.show();
     clearInterval(timerId);
-    setTimeout("removeGame();startGame()",5000);
-    tim=1;
+    var gameMatrix = document.getElementById("matrixTable");
+    gameMatrix.querySelectorAll('button').forEach(function(button){button.setAttribute("disabled", "true");});
   }
   else if(currentCellValue >=1 && currentCellValue <= 6){
     matrixTableUI.rows[x].cells[y].innerHTML=" "+currentCellValue+" ";  
@@ -77,24 +77,6 @@ function cellMatrixClicked(ev, x, y){
   }
 
   winTest();
-}
-
-function winTest()
-{ 
-  var winTestFlag=1;
-  var gameTimeBox=document.getElementById("gameTimer");
-  for(i=0;i<10;i++)
-    for(j=0;j<10;j++)
-      if(matrixTable[i][j] != -1 && matrixTable[i][j] != 7)
-        winTestFlag=0;
-
-  if(winTestFlag){
-    alert("Ati trecut jocu in " + gameTimeBox.value);
-    allmines.show();
-    clearInterval(timerId);
-
-    tim=1;
-  }
 }
 
 function createDataTable(mineTable)
