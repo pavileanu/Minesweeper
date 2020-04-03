@@ -1,6 +1,8 @@
 function createUITable(){
     var body=document.getElementsByTagName("body")[0];
     var table=document.createElement("table");
+    numberOfFlaggedMines = 0;
+    flaggedMines = [];
     for(i=0;i<10;i++){
       var tr=document.createElement("tr");
       for(j=0;j<10;j++){
@@ -12,21 +14,23 @@ function createUITable(){
         casuta.setAttribute("prim", i) 
         casuta.setAttribute("doi", j);
 
-          td.appendChild(casuta);
-          td.setAttribute("height"," 55px");
-          td.setAttribute("width"," 50px");
-          td.style.background = CULOARE_TD;
-          tr.appendChild(td);}
+        addRightClickEvenCell(casuta);
 
-          table.appendChild(tr);}
+        td.appendChild(casuta);
+        td.setAttribute("height"," 55px");
+        td.setAttribute("width"," 50px");
+        td.style.background = CULOARE_TD;
+        tr.appendChild(td);}
 
-          body.appendChild(table);
-          table.setAttribute("border",1);
-          table.style.position="absolute";                
-          table.style.left=200;       
-          table.style.top=100;         
+        table.appendChild(tr);}
 
-          table.setAttribute("id","matrixTable");
+        body.appendChild(table);
+        table.setAttribute("border",1);
+        table.style.position="absolute";                
+        table.style.left=200;       
+        table.style.top=100;         
+
+        table.setAttribute("id","matrixTable");
 }
 
 
@@ -45,7 +49,7 @@ function cellMatrixClicked(ev, x, y){
   if(currentCellValue < 0){
     matrixTableUI.rows[x].cells[y].innerHTML='<img  src="bomba.jpg"  id="bombImage" style="position:relative;  width:50px; height:50px;">';
     alert("noob!");
-    allmines.show();
+    showMineTable();
     clearInterval(timerId);
     var gameMatrix = document.getElementById("matrixTable");
     gameMatrix.querySelectorAll('button').forEach(function(button){button.setAttribute("disabled", "true");});
@@ -110,8 +114,27 @@ function createDataTable(mineTable)
       }
       else matrixTable[x][y]=-1;
     }
+}
 
 
+function addRightClickEvenCell(casuta)
+{
+  casuta.addEventListener("contextmenu",function(event){
+  event.preventDefault();
+  var i = this.getAttribute("prim");
+  var j = this.getAttribute("doi");
+  if(isFlaggedMine(i, j) == 0){
+    this.style.backgroundImage = "url('flagMine.png')";
+    this.style.backgroundSize = "100% 100%";
+    this.setAttribute("onclick", "");
+    setMine(i, j);
+  }
+  else{
+    this.style.backgroundImage = "";
+    this.setAttribute("onclick","cellMatrixClicked(event, null, null)"); 
+    removeMine(i, j);
+  }
+  },false);
 }
 
 

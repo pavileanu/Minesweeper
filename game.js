@@ -4,12 +4,9 @@ function startGame(){
 	createNewGameButton();
 	createGameTimerTextBox();
 	createPauseGameButton();
-	createMainMenuButton();
+	createMainMenuButton();	
 
-	allmines = new mines();
-	
-	createDataTable(allmines.createMinesTable());
-
+	createDataTable(createMinesTable());
 	createUITable();
 
 	startingDate=new Date();       
@@ -54,7 +51,7 @@ function winTest()
 
   if(winTestFlag){
     alert("Ati trecut jocu in " + gameTimeBox.value);
-    allmines.show();
+    showMineTable();
     clearInterval(timerId);
   }
 }

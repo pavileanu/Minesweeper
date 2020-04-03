@@ -62,6 +62,11 @@ td{
 	text-align: center;
 }
 
+#matrixTable td button{
+	background-size: 100% 100%;
+}
+
+
 .table-settings td{
 	background-color:white;
 }
