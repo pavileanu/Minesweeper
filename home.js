@@ -2,7 +2,6 @@ var matrixTable, mineTable, allMines, flaggedMines, numberOfFlaggedMines;
 var isGamePaused=0, timerId;
 var CULOARE_BUTON = "#FF9999";
 var CULOARE_TD= "#FFCC00"; 
-window.PointerEvent=null;
 
 function createWelcomeMessageLayer(){ 
 	var welcomeMessageBox=document.getElementById("welcomeMessageBox");
@@ -38,8 +37,7 @@ function settingsToMainMenu(){
 
 //show, loose, doNothing
 
-
- 
+/*
 function FlaggedMinesArroundCell(i, j){
  
  	var flaggedMinesSelected = [];

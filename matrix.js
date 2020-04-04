@@ -11,8 +11,10 @@ function createUITable(){
         casuta.style.background = CULOARE_BUTON;
 
         casuta.setAttribute("onclick","cellMatrixClicked(event, null, null)");    
-        casuta.setAttribute("prim", i) 
+        casuta.setAttribute("prim", i);
         casuta.setAttribute("doi", j);
+
+        td.setAttribute("onclick", "indicatorPressed(event)");
 
         addRightClickEvenCell(casuta);
 
@@ -47,12 +49,7 @@ function cellMatrixClicked(ev, x, y){
   matrixTableUI=document.getElementById("matrixTable");
   
   if(currentCellValue < 0){
-    matrixTableUI.rows[x].cells[y].innerHTML='<img  src="bomba.jpg"  id="bombImage" style="position:relative;  width:50px; height:50px;">';
-    alert("noob!");
-    showMineTable();
-    clearInterval(timerId);
-    var gameMatrix = document.getElementById("matrixTable");
-    gameMatrix.querySelectorAll('button').forEach(function(button){button.setAttribute("disabled", "true");});
+    loose(x, y);
   }
   else if(currentCellValue >=1 && currentCellValue <= 6){
     matrixTableUI.rows[x].cells[y].innerHTML=" "+currentCellValue+" ";  
@@ -138,8 +135,184 @@ function addRightClickEvenCell(casuta)
 }
 
 
+function FlaggedMinesArroundCell(i, j){
+ 
+  var flaggedMinesSelected = [];
+  for(k = 0; k < flaggedMines.length; k++){
+    if((flaggedMines[k].x == i-1 && flaggedMines[k].y == j-1) ||
+      (flaggedMines[k].x == i-1 && flaggedMines[k].y == j)  ||
+      (flaggedMines[k].x == i-1 && flaggedMines[k].y == j+1) ||
+      (flaggedMines[k].x == i && flaggedMines[k].y == j-1) ||
+      (flaggedMines[k].x == i && flaggedMines[k].y == j+1) ||
+      (flaggedMines[k].x == i+1 && flaggedMines[k].y == j-1) ||
+      (flaggedMines[k].x == i+1 && flaggedMines[k].y == j) ||
+      (flaggedMines[k].x == i+1 && flaggedMines[k].y == j+1))
+      flaggedMinesSelected.push(new mine(flaggedMines[k].x, flaggedMines[k].y));
+  return flaggedMinesSelected;
+  }
+}
+
+function indicatorPressed(ev)
+{
+  var x=ev.target.getAttribute("prim");
+  var y=ev.target.getAttribute("doi");
+  var fm = FlaggedMinesArroundCell(x, y);
+  if (fm == null) fm = [];
+  var checkCount = 0;
+  if(fm.length > 0)
+  {
+    for(var k = 0; k < fm.length; k++)
+      if(matrixTable[fm[k].x][fm[k].y] == -1)
+        checkCount++;
+
+    if(checkCount == fm.length){
+      showCells(x, y);
+    }
+    else{
+      loose();
+    }
+
+  }
+  hooverCells(x, y);
+}
 
 
+function hooverCells(i, j){
+
+    if(matrixTable[i-1][j-1] != 7){
+      hooverCell(i-1, j-1);
+        return;
+    }
+  
+ 
+
+  try{
+  if(matrixTable[i-1][j] != 7)
+    hooverCell(i-1, j);
+  }
+  catch{}
+
+  try{
+    if(matrixTable[i-1][j+1] != 7)
+      hooverCell(i-1, j+1);
+  }
+  catch{}
+
+  try{
+  if(matrixTable[i][j-1] != 7)
+    hooverCell(i, j-1);}
+  catch{}
+
+  try{
+  if(matrixTable[i][j+1] != 7)
+    hooverCell(i, j+1);
+  }
+  catch{}
+
+  try{
+    if(matrixTable[i+1][j-1] != 7)
+      hooverCell(i+1, j-1);
+  }
+  catch{}
+
+  try{
+    if(matrixTable[i+1][j] != 7)
+      hooverCell(i+1, j);
+  }
+  catch{}
+
+  try{
+    if(matrixTable[i+1][j+1] != 7)
+      hooverCell(i+1, j+1);
+  }
+  catch{}
+
+}
+
+function loose(){
+  alert("noob!");
+  showMineTable();
+  clearInterval(timerId);
+  var gameMatrix = document.getElementById("matrixTable");
+  gameMatrix.querySelectorAll('button').forEach(function(button){button.setAttribute("disabled", "true");});
+}
+
+
+function showCells(i, j){
+  try{
+    if(martixTable[i-1][j-1] != -1)
+      showCell(i-1, j-1);
+  }
+  catch{
+    return;
+  }
+
+  try{
+    if(matrixTable[i-1][j] != -1)
+      showCell(i-1, j);
+    }
+  catch{}
+
+  try{
+    if(matrixTable[i-1][j+1] != -1)
+      showCell(i-1, j+1);
+  }
+  catch{}
+
+  try{
+  if(matrixTable[i][j-1] != -1)
+    showCell(i, j-1);}
+  catch{}
+
+  try{
+  if(matrixTable[i][j+1] != -1)
+    showCell(i, j+1);
+  }
+  catch{}
+
+  try{
+    if(matrixTable[i+1][j-1] != -1)
+      showCell(i+1, j-1);
+  }
+  catch{}
+
+  try{
+    if(matrixTable[i+1][j] != -1)
+      showCell(i+1, j);
+  }
+  catch{}
+
+  try{
+    if(matrixTable[i+1][j+1] != -1)
+      showCell(i+1, j+1);
+  }
+  catch{}
+}
+
+function hooverCell(i, j){
+  matrixTableUI=document.getElementById("matrixTable");
+  var search = `[prim = '${i}' ][doi =  '${j}']`  ;
+  
+  var buttonToHoover = matrixTableUI.querySelector(search);
+  debugger;
+  fakeClick(matrixTableUI.querySelector(search));
+}
+
+function showCell(i, j){
+  matrixTableUI=document.getElementById("matrixTable");
+  matrixTableUI.rows[i].cells[j].innerHTML=" "+matrixTable[i][j]+" ";  
+  matrixTable[i][j]=7;
+} 
+
+function fakeClick(element){
+
+  var previousColor = element.getAttribute("background-color");
+  element.setAttribute("background-color", "red");
+  setTimeout(500, function(){ 
+    element.setAttribute("background-color",previousColor);
+  });
+
+}
 
 
 
