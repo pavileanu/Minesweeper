@@ -13,6 +13,8 @@ function createUITable(){
         casuta.setAttribute("onclick","cellMatrixClicked(event, null, null)");    
         casuta.setAttribute("prim", i);
         casuta.setAttribute("doi", j);
+        td.setAttribute("prim", i);
+        td.setAttribute("doi", j);
 
         td.setAttribute("onclick", "indicatorPressed(event)");
 
@@ -178,54 +180,51 @@ function indicatorPressed(ev)
 
 
 function hooverCells(i, j){
+//Number(
+  if(matrixTable[i-1][j-1] != 7){
+    hooverCell(i-1, j-1);
+  }
 
-    if(matrixTable[i-1][j-1] != 7){
-      hooverCell(i-1, j-1);
-        return;
-    }
-  
- 
-
-  try{
+  //try{
   if(matrixTable[i-1][j] != 7)
     hooverCell(i-1, j);
-  }
-  catch{}
+  
+  //}catch{}
 
-  try{
-    if(matrixTable[i-1][j+1] != 7)
-      hooverCell(i-1, j+1);
-  }
-  catch{}
+  //try{
+    if(matrixTable[Number(i)-1][Number(j)+1] != 7)
+      hooverCell(Number(i)-1, Number(j)+1);
+  //}
+  //catch{}
 
-  try{
+  //try{
   if(matrixTable[i][j-1] != 7)
-    hooverCell(i, j-1);}
-  catch{}
+    hooverCell(i, j-1);
+  //}catch{}
 
-  try{
-  if(matrixTable[i][j+1] != 7)
-    hooverCell(i, j+1);
-  }
-  catch{}
+  //try{
+  if(matrixTable[i][Number(j)+1] != 7)
+    hooverCell(i, Number(j)+1);
+  
+  //}catch{}
 
-  try{
-    if(matrixTable[i+1][j-1] != 7)
-      hooverCell(i+1, j-1);
-  }
-  catch{}
+  //try{
+    if(matrixTable[Number(i)+1][j-1] != 7)
+      hooverCell(Number(i)+1, j-1);
+  //}
+  //catch{}
 
-  try{
-    if(matrixTable[i+1][j] != 7)
-      hooverCell(i+1, j);
-  }
-  catch{}
+  //try{
+    if(matrixTable[Number(i)+1][j] != 7)
+      hooverCell(Number(i)+1, j);
+  //}
+  //catch{}
 
-  try{
-    if(matrixTable[i+1][j+1] != 7)
-      hooverCell(i+1, j+1);
-  }
-  catch{}
+  //try{
+    if(matrixTable[Number(i)+1][Number(j)+1] != 7)
+      hooverCell(Number(i)+1, Number(j)+1);
+  //}
+  //catch{}
 
 }
 
@@ -294,8 +293,14 @@ function hooverCell(i, j){
   var search = `[prim = '${i}' ][doi =  '${j}']`  ;
   
   var buttonToHoover = matrixTableUI.querySelector(search);
-  debugger;
-  fakeClick(matrixTableUI.querySelector(search));
+  //debugger;
+
+  var previousColor = buttonToHoover.style.backgroundColor;
+  buttonToHoover.style.backgroundColor = "red";
+  setTimeout(function(buttonToHoover, previousColor){ 
+    buttonToHoover.style.backgroundColor = previousColor;
+  }, 500, buttonToHoover, previousColor);
+
 }
 
 function showCell(i, j){
@@ -304,15 +309,6 @@ function showCell(i, j){
   matrixTable[i][j]=7;
 } 
 
-function fakeClick(element){
-
-  var previousColor = element.getAttribute("background-color");
-  element.setAttribute("background-color", "red");
-  setTimeout(500, function(){ 
-    element.setAttribute("background-color",previousColor);
-  });
-
-}
 
 
 
