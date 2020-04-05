@@ -3,9 +3,9 @@ function createUITable(){
     var table=document.createElement("table");
     numberOfFlaggedMines = 0;
     flaggedMines = [];
-    for(i=0;i<10;i++){
+    for(i=0;i<lines;i++){
       var tr=document.createElement("tr");
-      for(j=0;j<10;j++){
+      for(j=0;j<columns;j++){
         var td=document.createElement("td");
         var casuta=document.createElement("button");
         casuta.style.background = CULOARE_BUTON;
@@ -37,6 +37,15 @@ function createUITable(){
         table.setAttribute("id","matrixTable");
 }
 
+function createDataTable(mineTable)
+{
+  matrixTable = new Array(lines);
+  for(x=0;x<lines;x++){
+    matrixTable[x] = new Array(columns);
+    for(y=0;y<columns;y++)
+      matrixTable[x][y] = calculateCellValue(x, y);
+    }
+}
 
 function cellMatrixClicked(ev, x, y){
 
@@ -70,38 +79,27 @@ function cellMatrixClicked(ev, x, y){
     if(x > 0)
       cellMatrixClicked(ev, Number(x-1), Number(y));
 
-    if(x > 0 && y < 9)
+    if(x > 0 && y < columns - 1)
       cellMatrixClicked(ev, Number(x-1), Number(y)+1);
 
     if(y > 0)
       cellMatrixClicked(ev, Number(x), Number(y-1));
 
-    if(y < 9)
+    if(y < columns - 1)
       cellMatrixClicked(ev, Number(x), Number(y)+1);
     
-    if(x < 9 && y > 0)
+    if(x < lines - 1 && y > 0)
       cellMatrixClicked(ev, Number(x)+1, Number(y-1));
 
-    if(x < 9)
+    if(x < lines - 1)
       cellMatrixClicked(ev, Number(x)+1, Number(y));
 
-    if(x < 9 && y < 9)
+    if(x < lines - 1 && y < columns - 1)
       cellMatrixClicked(ev, Number(x)+1, Number(y)+1);
   }
 
   winTest();
 }
-
-function createDataTable(mineTable)
-{
-  matrixTable = new Array(10);
-  for(x=0;x<10;x++){
-    matrixTable[x] = new Array(10);
-    for(y=0;y<10;y++)
-      matrixTable[x][y] = calculateCellValue(x, y);
-    }
-}
-
 
 function addRightClickEvenCell(casuta)
 {
@@ -124,25 +122,6 @@ function addRightClickEvenCell(casuta)
 }
 
 
-function FlaggedMinesArroundCell(i, j){
- 
-  i = Number(i);
-  j = Number(j); 
-  var flaggedMinesSelected = [];
-  for(k = 0; k < flaggedMines.length; k++)
-    if((flaggedMines[k].x == i-1 && flaggedMines[k].y == j-1) ||
-      (flaggedMines[k].x == i-1 && flaggedMines[k].y == j)  ||
-      (flaggedMines[k].x == i-1 && flaggedMines[k].y == j+1) ||
-      (flaggedMines[k].x == i && flaggedMines[k].y == j-1) ||
-      (flaggedMines[k].x == i && flaggedMines[k].y == j+1) ||
-      (flaggedMines[k].x == i+1 && flaggedMines[k].y == j-1) ||
-      (flaggedMines[k].x == i+1 && flaggedMines[k].y == j) ||
-      (flaggedMines[k].x == i+1 && flaggedMines[k].y == j+1))
-      flaggedMinesSelected.push(new mine(flaggedMines[k].x, flaggedMines[k].y));
-  return flaggedMinesSelected;
-  
-}
-
 function indicatorPressed(ev)
 {
   var x=ev.target.getAttribute("prim");
@@ -161,62 +140,16 @@ function indicatorPressed(ev)
       if(matrixTable[fm[k].x][fm[k].y] == -1)
         checkCount++;
 
-    if(fm.length == calculateCellValue(x, y))
+    if(fm.length == calculateCellValue(x, y)){
       if( checkCount == fm.length)      
         showCells(x, y);
       else
         loose(); 
+      return;
+    }
 
   }
   hooverCells(x, y);
-}
-
-
-function hooverCells(i, j){
-
-  i = Number(i);
-  j = Number(j);
-    
-  if(i > 0 && j > 0)
-    if( matrixTable[i-1][j-1] != 7)
-      hooverCell(i-1, j-1);
-
-  if(i > 0)
-    if( matrixTable[i-1][j] != 7)
-      hooverCell(i-1, j);
-    
-  if(i > 0 && j < 9)
-    if(matrixTable[i-1][j+1] != 7)
-      hooverCell(i-1, j+1);
-
-  if(j > 0)
-    if(matrixTable[i][j-1] != 7)
-      hooverCell(i, j-1);
-  
-  if(j < 9)
-    if(matrixTable[i][j+1] != 7)
-      hooverCell(i, j+1);
-
-  if(i < 9 && j > 0)
-    if( matrixTable[i+1][j-1] != 7)
-      hooverCell(i+1, j-1);
-
-  if(i < 9)
-    if( matrixTable[i+1][j] != 7)
-      hooverCell(i+1, j);
-
-  if(i < 9 && j < 9)
-    if( matrixTable[i+1][j+1] != 7)
-      hooverCell(i+1, j+1);
-
-}
-
-function loose(){
-  alert("noob!");
-  showMineTable();
-  clearInterval(timerId);
-  var gameMatrix = document.getElementById("matrixTable");
-  gameMatrix.querySelectorAll('button').forEach(function(button){button.setAttribute("disabled", "true");});
 }
 
 function showCells(i, j){
@@ -232,7 +165,7 @@ function showCells(i, j){
     if(matrixTable[i-1][j] != -1 &&  matrixTable[i-1][j] != 7)
       cellMatrixClicked(null, i-1, j);
     
-  if(i > 0 && j < 9)
+  if(i > 0 && j < columns -1)
     if(matrixTable[i-1][j+1] != -1 && matrixTable[i-1][j+1] != 7)
       cellMatrixClicked(null, i-1, j+1);
 
@@ -240,21 +173,60 @@ function showCells(i, j){
     if(matrixTable[i][j-1] != -1 && matrixTable[i][j-1] != 7)
       cellMatrixClicked(null, i, j-1);
   
-  if(j < 9)
+  if(j < columns -1)
     if(matrixTable[i][j+1] != -1 && matrixTable[i][j+1] != 7)
       cellMatrixClicked(null, i, j+1);
 
-  if(i < 9 && j > 0)
+  if(i < lines - 1 && j > 0)
     if(matrixTable[i+1][j-1] != -1 &&  matrixTable[i+1][j-1] != 7)
       cellMatrixClicked(null, i+1, j-1);
 
-  if(i < 9)
+  if(i < lines - 1)
     if(matrixTable[i+1][j] != -1 &&  matrixTable[i+1][j] != 7)
       cellMatrixClicked(null, i+1, j);
 
-  if(i < 9 && j < 9)
+  if(i < lines - 1 && j < columns - 1)
     if(matrixTable[i+1][j+1] != -1 && matrixTable[i+1][j+1] != 7)
       cellMatrixClicked(null, i+1, j+1);
+
+}
+
+function hooverCells(i, j){
+
+  i = Number(i);
+  j = Number(j);
+    
+  if(i > 0 && j > 0)
+    if( matrixTable[i-1][j-1] != 7)
+      hooverCell(i-1, j-1);
+
+  if(i > 0)
+    if( matrixTable[i-1][j] != 7)
+      hooverCell(i-1, j);
+    
+  if(i > 0 && j < columns - 1)
+    if(matrixTable[i-1][j+1] != 7)
+      hooverCell(i-1, j+1);
+
+  if(j > 0)
+    if(matrixTable[i][j-1] != 7)
+      hooverCell(i, j-1);
+  
+  if(j < columns - 1)
+    if(matrixTable[i][j+1] != 7)
+      hooverCell(i, j+1);
+
+  if(i < lines - 1 && j > 0)
+    if( matrixTable[i+1][j-1] != 7)
+      hooverCell(i+1, j-1);
+
+  if(i < lines - 1)
+    if( matrixTable[i+1][j] != 7)
+      hooverCell(i+1, j);
+
+  if(i < lines - 1 && j < columns - 1)
+    if( matrixTable[i+1][j+1] != 7)
+      hooverCell(i+1, j+1);
 
 }
 
@@ -265,7 +237,7 @@ function hooverCell(i, j){
   var buttonToHoover = matrixTableUI.querySelector(search);
   //debugger;
 
-  var previousColor = buttonToHoover.style.backgroundColor;
+  var previousColor = CULOARE_TD;
   buttonToHoover.style.backgroundColor = "red";
   setTimeout(function(buttonToHoover, previousColor){ 
     buttonToHoover.style.backgroundColor = previousColor;
@@ -288,24 +260,24 @@ function calculateCellValue(x, y){
   if(mineTable[x][y]==0){
     if(x==0&&y==0)
       cellValue = mineTable[0][1]+mineTable[1][1]+mineTable[1][0];  
-    if(x==0&&y==9)
-      cellValue =mineTable[0][8]+mineTable[1][8]+mineTable[1][9];
-    if(x==9&&y==0)
-      cellValue =mineTable[8][0]+mineTable[9][1]+mineTable[8][1];
-    if(x==9&&y==9)
-      cellValue=mineTable[8][8]+mineTable[8][9]+mineTable[9][8];
+    if(x==0&&y==columns-1)
+      cellValue =mineTable[0][columns-2]+mineTable[1][columns-2]+mineTable[1][columns-1];
+    if(x==lines-1&&y==0)
+      cellValue =mineTable[lines-1][0]+mineTable[lines-1][1]+mineTable[lines-2][1];
+    if(x==lines-1&&y==columns-1)
+      cellValue=mineTable[lines-2][columns-2]+mineTable[lines-2][columns-1]+mineTable[lines-1][columns-2];
           //colturi final
   
-    if(y==0&&x!=0&&x!=9)
+    if(y==0&&x!=0&&x!=lines-1)
       cellValue=mineTable[x+1][y]+mineTable[x-1][y]+mineTable[x-1][y+1]+mineTable[x][y+1]+mineTable[x+1][y+1];
-    if(x==0&&y!=0&&y!=9)
+    if(x==0&&y!=0&&y!=columns-1)
       cellValue=mineTable[x][y-1]+mineTable[x][y+1]+mineTable[x+1][y-1]+mineTable[x+1][y+1]+mineTable[x+1][y];
-    if(x==9&&y!=0&&y!=9)
+    if(x==lines-1&&y!=0&&y!=columns-1)
       cellValue=mineTable[x][y-1]+mineTable[x][y+1]+mineTable[x-1][y-1]+mineTable[x-1][y]+mineTable[x-1][y+1];
-    if(y==9&&x!=0&&x!=9)
+    if(y==columns-1&&x!=0&&x!=lines-1)
       cellValue=mineTable[x-1][y]+mineTable[x+1][y]+mineTable[x-1][y-1]+mineTable[x][y-1]+mineTable[x+1][y-1];
       //margini final
-    if(x!=0&&y!=0&&x!=9&&y!=9)
+    if(x!=0&&y!=0&&x!=lines-1&&y!=columns-1)
       cellValue=mineTable[x-1][y-1]+mineTable[x-1][y]+mineTable[x-1][y+1]+mineTable[x][y-1]+mineTable[x][y+1]+mineTable[x+1][y-1]+mineTable[x+1][y]+mineTable[x+1][y+1];
   
   }

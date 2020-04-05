@@ -3,19 +3,19 @@ function mine(x, y){
 	this.y = y;
 }
 function createMinesTable(){
-	allMines = new Array(10);
+	allMines = new Array(minesNumber);
 
-	mineTable = new Array(10);
+	mineTable = new Array(lines);
 	var mineIndex = 0; 
 
-	for(i=0;i<10;i++){
-		mineTable[i] = new Array(10);
-	for(j=0;j<10;j++)
+	for(i=0;i<lines;i++){
+		mineTable[i] = new Array(columns);
+	for(j=0;j<columns;j++)
 		mineTable[i][j]=0;}
 
-		for(i=0;i<11;i++){
-			x=Math.floor(Math.random()*10);
-			y=Math.floor(Math.random()*10);
+		for(i=0;i<minesNumber;i++){
+			x=Math.floor(Math.random() * lines); 
+			y=Math.floor(Math.random() * columns);
 			mineTable[x][y] = 1;
 			allMines[mineIndex++] = new mine(x,y);
 		}
@@ -24,8 +24,8 @@ function createMinesTable(){
 
 function showMineTable(){
 	var matrixTable=document.getElementById("matrixTable");
-	for(i=0;i<10;i++)
-	for(j=0;j<10;j++)
+	for(i=0;i<lines;i++)
+	for(j=0;j<columns;j++)
 		if(mineTable[i][j]==1)
 			matrixTable.rows[i].cells[j].innerHTML='<img  src="bomba.jpg"  id="bombImage" style="position:relative;  width:50px; height:50px;">';
 }
@@ -50,6 +50,24 @@ function isFlaggedMine(x, y){
 				return 1;
 		}
 	return 0;
+}
+
+function FlaggedMinesArroundCell(i, j){
+ 
+  i = Number(i);
+  j = Number(j); 
+  var flaggedMinesSelected = [];
+  for(k = 0; k < flaggedMines.length; k++)
+    if((flaggedMines[k].x == i-1 && flaggedMines[k].y == j-1) ||
+      (flaggedMines[k].x == i-1 && flaggedMines[k].y == j)  ||
+      (flaggedMines[k].x == i-1 && flaggedMines[k].y == j+1) ||
+      (flaggedMines[k].x == i && flaggedMines[k].y == j-1) ||
+      (flaggedMines[k].x == i && flaggedMines[k].y == j+1) ||
+      (flaggedMines[k].x == i+1 && flaggedMines[k].y == j-1) ||
+      (flaggedMines[k].x == i+1 && flaggedMines[k].y == j) ||
+      (flaggedMines[k].x == i+1 && flaggedMines[k].y == j+1))
+      flaggedMinesSelected.push(new mine(flaggedMines[k].x, flaggedMines[k].y));
+  return flaggedMinesSelected;  
 }
 
 

@@ -44,18 +44,25 @@ function winTest()
 { 
   var winTestFlag=1;
   var gameTimeBox=document.getElementById("gameTimer");
-  for(i=0;i<10;i++)
-    for(j=0;j<10;j++)
+  for(i=0;i<lines;i++)
+    for(j=0;j<columns;j++)
       if(matrixTable[i][j] != -1 && matrixTable[i][j] != 7)
         winTestFlag=0;
 
-  if(winTestFlag){
-    alert("Ati trecut jocu in " + gameTimeBox.value);
+  if(winTestFlag){    
     showMineTable();
+    alert("Ati trecut jocu in " + gameTimeBox.value);
     clearInterval(timerId);
   }
 }
 
+function loose(){
+  alert("noob!");
+  showMineTable();
+  clearInterval(timerId);
+  var gameMatrix = document.getElementById("matrixTable");
+  gameMatrix.querySelectorAll('button').forEach(function(button){button.setAttribute("disabled", "true");});
+}
 
 function createNewGameButton(){
 	var body=document.getElementsByTagName("body")[0];
