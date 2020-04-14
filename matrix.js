@@ -8,7 +8,6 @@ function createUITable(){
       for(j=0;j<columns;j++){
         var td=document.createElement("td");
         var casuta=document.createElement("button");
-        casuta.style.background = CULOARE_BUTON;
 
         casuta.setAttribute("onclick","cellMatrixClicked(event, null, null)");    
         casuta.setAttribute("prim", i);
@@ -21,18 +20,12 @@ function createUITable(){
         addRightClickEvenCell(casuta);
 
         td.appendChild(casuta);
-        td.setAttribute("height"," 55px");
-        td.setAttribute("width"," 50px");
-        td.style.background = CULOARE_TD;
         tr.appendChild(td);}
 
         table.appendChild(tr);}
 
         body.appendChild(table);
-        table.setAttribute("border",1);
-        table.style.position="absolute";                
-        table.style.left=200;       
-        table.style.top=100;         
+        table.setAttribute("border",1);      
 
         table.setAttribute("id","matrixTable");
 }
@@ -232,12 +225,11 @@ function hooverCells(i, j){
 
 function hooverCell(i, j){
   matrixTableUI=document.getElementById("matrixTable");
-  var search = `[prim = '${i}' ][doi =  '${j}']`  ;
+  var search = `button[prim = '${i}' ][doi =  '${j}']`  ;
   
   var buttonToHoover = matrixTableUI.querySelector(search);
-  //debugger;
 
-  var previousColor = CULOARE_TD;
+  var previousColor = CULOARE_BUTON;
   buttonToHoover.style.backgroundColor = "red";
   setTimeout(function(buttonToHoover, previousColor){ 
     buttonToHoover.style.backgroundColor = previousColor;

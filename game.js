@@ -1,6 +1,12 @@
 function startGame(){
 	removeMainMenu();
 
+	var body=document.getElementsByTagName("body")[0];
+	var gameBar = document.createElement("section");
+	gameBar.setAttribute("id", "gameBar");
+	body.appendChild(gameBar);
+
+
 	createNewGameButton();
 	createGameTimerTextBox();
 	createPauseGameButton();
@@ -18,16 +24,10 @@ function removeGame(){
 
 	var body=document.getElementsByTagName("body")[0];
 	var matrixTable=document.getElementById("matrixTable");
+	var gameBar = document.getElementById("gameBar");
 
-	var newGame=document.getElementById("newGame");
-	var gameTimer=document.getElementById("gameTimer");
-	var mainMenu=document.getElementById("mainMenu");
-	var pauseGame=document.getElementById("pauseGame");
 	body.removeChild(matrixTable);
-	body.removeChild(newGame);
-	body.removeChild(gameTimer);
-	body.removeChild(mainMenu); 
-	body.removeChild(pauseGame);
+	body.removeChild(gameBar);
 
 }
 
@@ -65,41 +65,40 @@ function loose(){
 }
 
 function createNewGameButton(){
-	var body=document.getElementsByTagName("body")[0];
+	var gameBar = document.getElementById("gameBar");
 	var x=document.createElement("input");
 	x.setAttribute("type","button");
 	x.setAttribute("onclick","removeGame();startGame()");
-	x.setAttribute("value","New game");
+	x.setAttribute("value","New");
 	x.setAttribute("id","newGame");
-	body.appendChild(x);
+	gameBar.appendChild(x);
 }
 
 function createGameTimerTextBox(){
-	var body=document.getElementsByTagName("body")[0];
+	var gameBar = document.getElementById("gameBar");
 	var x=document.createElement("input");
 	x.setAttribute("type","text");
 	x.setAttribute("id","gameTimer");
-	x.setAttribute("align","center");
-	body.appendChild(x);
+	gameBar.appendChild(x);
 }
 
 function createPauseGameButton(){
-	var body=document.getElementsByTagName("body")[0];
+	var gameBar = document.getElementById("gameBar");
     var stopClock=document.createElement("input");
 	stopClock.setAttribute("type","button");
 	stopClock.setAttribute("id","pauseGame");
-	stopClock.setAttribute("value","Pause Game");
+	stopClock.setAttribute("value","Pause");
 	stopClock.setAttribute("onclick","pauseGame()");
-	body.appendChild(stopClock);
+	gameBar.appendChild(stopClock);
 }
 
 function createMainMenuButton(){
-	var body=document.getElementsByTagName("body")[0];
+	var gameBar = document.getElementById("gameBar");
 	var x=document.createElement("input");
 	x.setAttribute("type","button");
 	x.setAttribute("onclick","window.location.reload()");
-	x.setAttribute("value","Main Menu");
+	x.setAttribute("value","Exit");
 	x.setAttribute("id","mainMenu");
-	body.appendChild(x);
+	gameBar.appendChild(x);
 }
 

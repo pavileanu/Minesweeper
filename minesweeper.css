@@ -1,60 +1,72 @@
-table{
-	text-align:center;
-	border-collapse:collapse;}
-
-button{
-	height: 50px; width: 50px;}
-
-body{
-background-color:#00FFFF;}
-	
-input[type="text"]{
-	width:120px;
-	height:50px;
-	margin-left:25%;
-	margin-top:1%;
-	display:block;
-	text-align:center;
-	font-size:200%;
+*{
+	border: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-#startButton{
-	margin-top:10%;
+body{
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(86,61,124,1) 0%, rgba(0,212,255,1) 78%);
+}
+
+main{
+	text-align: center;
+}
+
+main input{
+	display: block;
+	background: #3d3d38;
+	margin: 20vh auto;
+	font-size: 50px;
+	color: yellow;
+	border-radius: 10px;
+	padding: 30px;
+}
+
+table{
 	text-align:center;
-	width:250px;
-	height:100;}
+	border-collapse:collapse;
+	margin: auto;
+}
+
+table td button{
+	background: #f2c55c;
+	height: 50px;
+	width: 50px;
+	background-size: 100% 100%;
+}
+
+table td{
+	background: #cbd1cd;
+	border: 2px solid black;
+	height: 50px;
+	width: 50px;
+	font-weight: 600;
+	font-size: 20px;
+}
+
+#gameBar{
+	margin: 5px auto;
+	width: 30%;
+	display: flex;
+	height: 5vh;
+}
+
+#newGame{
+	flex: 2;
+}
+
+#gameTimer{
+	flex: 3;
+}
 
 #pauseGame{
-	background-color: green;}
+	flex: 1;
+	flex-grow: 0;
+}
 
 #mainMenu{
-	position:absolute;
-	top:125px;
-	right:92%;
-	width:100px;
-	height:100;
-	background-color: red;}
-
-#settingsButton{
-	margin-top:10%;
-	text-align:center;
-	width:250px;
-	height:100;}
-
-td{
-	font-size:20px;}
-
-#menu{
-	background-image: url("smiley.gif");
-	background-repeat:repeat-x;}
-
-#num{
-	width:120px;
-	height:50px;
-
-	display:block;
-	text-align:center;
-	font-size:200%;	}
+	flex: 1;
+}
 
 #settings{
 	display: none;
@@ -62,21 +74,3 @@ td{
 	text-align: center;
 }
 
-#matrixTable td button{
-	background-size: 100% 100%;
-}
-
-
-.table-settings td{
-	background-color:white;
-}
-
-.table-settings{
-	display:inline;
-	border-color:#ff0000 #0000ff;
-	background-size:80px 60px;
-	text-align:right;   
-	padding:60px;    
-	color:FF3399; 
-	font-size:20px;
-}
