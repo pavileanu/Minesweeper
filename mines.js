@@ -27,7 +27,7 @@ function showMineTable(){
 	for(i=0;i<lines;i++)
 	for(j=0;j<columns;j++)
 		if(mineTable[i][j]==1)
-			matrixTable.rows[i].cells[j].innerHTML='<img  src="bomba.jpg"  id="bombImage" style="position:relative;  width:50px; height:50px;">';
+			matrixTable.rows[i].cells[j].innerHTML='<img  src="bomba.jpg"  id="bombImage" style="">';
 }
 
 function setMine(x, y){

@@ -1,5 +1,5 @@
 var matrixTable, mineTable, allMines, flaggedMines, numberOfFlaggedMines;
-var lines = 9, columns = 9, minesNumber=11;
+var lines = 8, columns = 8, minesNumber=11;
 var isGamePaused=0, timerId;
 var CULOARE_BUTON = "#f2c55c";
 var CULOARE_TD= "#cbd1cd"; 
@@ -13,7 +13,7 @@ function openSettings(){
 
 function settingsToMainMenu(){
 	var mainMenu = document.getElementById('menu');
-	menu.style.display = "block";
+	menu.style.display = "flex";
 	var settingsMenu = document.getElementById('settings');
 	settingsMenu.style.display = "none";
 }

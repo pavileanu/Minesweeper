@@ -17,6 +17,8 @@ function createUITable(){
 
         td.setAttribute("onclick", "indicatorPressed(event)");
 
+        //td.style.height = " " + document.body.clientWidth/columns;
+
         addRightClickEvenCell(casuta);
 
         td.appendChild(casuta);
@@ -24,8 +26,7 @@ function createUITable(){
 
         table.appendChild(tr);}
 
-        body.appendChild(table);
-        table.setAttribute("border",1);      
+        body.appendChild(table);   
 
         table.setAttribute("id","matrixTable");
 }

@@ -14,15 +14,15 @@ function pauseGame()
 	if(isGamePaused==0)
 		{clearInterval(timerId);
 		isGamePaused=1;
-		pauseGameButton.value="Resume Game";
+		pauseGameButton.style.backgroundImage  = 'url("resume.png")';
 		matrixTable.querySelectorAll('button').forEach(function(button){button.setAttribute("disabled", "true");});
 	}
 	else
 	{
-		startingDate=new Date(new Date().getTime() - timeSpentInGame.getTime())
+		startingDate=new Date(new Date().getTime() - timeSpentInGame.getTime());
 		timerId=setInterval("setTimer()",1000);
 		isGamePaused=0;
-		pauseGameButton.value="Pause Game";
+		pauseGameButton.style.backgroundImage  = 'url("pause.png")';
 		matrixTable.querySelectorAll('button').forEach(function(button){button.removeAttribute("disabled");});
 	} 
 }

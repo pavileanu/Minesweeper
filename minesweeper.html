@@ -8,6 +8,8 @@
 	    <script src="game.js" type="text/javascript" language="javascript"></script>
 	    <script src="settings.js" type="text/javascript" language="javascript"></script>
 	    <script src="https://code.jquery.com/jquery-3.4.1.js" type="text/javascript" language="javascript"></script>
+
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 
 	<body>
@@ -18,24 +20,29 @@
 		</main>
 
 		<section id="settings">
-			<input type="checkbox" id="colorBody1" value="#00FFFF">  Teal        
-			<input type="checkbox" id="colorBody2" value="grey">  Grey            
-			<input type="checkbox" id="colorBody3" value="orange"> Orange          
-			<select id="buttonColor">
-				<option value="buttonface">Grey</option>
-				<option value="#9933FF">Mauve</option>
-				<option value="#660033">Dark Brown</option>
-			</select>
-			<input type="radio" name="tableColor" value="#FFCC00">Dark Yellow<br>
-			<input type="radio" name="tableColor" value="#996633">Brown<br>
-			<input type="radio" name="tableColor" value="rgb(255,255,0)">Yellow<br>
+			<div class = "wrapper">
+				<div class="row">
+					<label for="themeSelect">Theme</label>         
+					<select id="themeSelect">
+						<option value="1">Default Theme</option>
+						<option value="2">Extra Theme</option>
+					</select>
+				</div>
 
-			<input type ="number" style="display: inline-block; margin-left: 0" id="nrLines">
-			<input type ="number" style="display: inline-block; margin-left: 0" id="nrColumns">
-			<input type ="number" style="display: inline-block; margin-left: 0" id="nrMines">
-
-			<input type="button" onClick="setBodyColor();setButtonColor();setTableColor();setGameSettings();settingsToMainMenu()" value="Submit">
-			<input type="button" onClick="settingsToMainMenu()" value="Main Menu">
+				<div class="row">
+					<label for="nrLines">Lines</label><input type ="number" style="display: inline-block;" min="2" max="99"  maxlength="2" id="nrLines">
+				</div>
+				<div class="row">
+					<label for="nrColumns">Columns</label><input type ="number" style="display: inline-block;" min="2" max="99" maxlength="2" id="nrColumns">
+				</div>
+				<div class="row">
+					<label for="nrMines">Mines</label><input type ="number" style="display: inline-block;" min="2" max="99" maxlength="2" id="nrMines">
+				</div>
+				<div class="row">
+					<input type="button" onClick="setGameSettings();settingsToMainMenu()" value="Submit">
+					<input type="button" onClick="settingsToMainMenu()" value="Main Menu">
+				</div>
+			</div>
 		</section>
 
 	</body>

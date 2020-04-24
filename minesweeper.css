@@ -9,68 +9,153 @@ body{
 }
 
 main{
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
 }
 
 main input{
 	display: block;
 	background: #3d3d38;
-	margin: 20vh auto;
 	font-size: 50px;
 	color: yellow;
 	border-radius: 10px;
 	padding: 30px;
+	width: 300px;
+	margin-top: 70px;
 }
 
 table{
-	text-align:center;
 	border-collapse:collapse;
 	margin: auto;
+	table-layout: fixed;
 }
 
 table td button{
 	background: #f2c55c;
-	height: 50px;
 	width: 50px;
+	height: 50px;
 	background-size: 100% 100%;
+}
+
+#bombImage{
+	background-size: 100% 100%;
+	width: 50px;
+	height: 50px;
 }
 
 table td{
 	background: #cbd1cd;
 	border: 2px solid black;
-	height: 50px;
-	width: 50px;
 	font-weight: 600;
 	font-size: 20px;
+	width: 50px;
+	height: 50px;
+	text-align: center;
 }
 
 #gameBar{
 	margin: 5px auto;
 	width: 30%;
 	display: flex;
-	height: 5vh;
+	height: 50px;
+	background-color: #fff;
 }
 
 #newGame{
-	flex: 2;
+	background-image: url("plus.png");
+	background-size: 100% 100%;
+	width: 50px;
+	height: 50px;
 }
 
 #gameTimer{
-	flex: 3;
+	text-align: center;
+	font-size: 20px;
+	width: 100px;
+	margin: 0 auto;
+	border-left: 5px solid blue;
+	border-right: 5px solid blue;
+	font-weight: 600;
 }
 
 #pauseGame{
-	flex: 1;
-	flex-grow: 0;
+	background-image: url("pause.png");
+	background-size: 100% 100%;
+	width: 50px;
+	height: 50px;
 }
 
 #mainMenu{
-	flex: 1;
+	background-image: url("quit.png");
+	background-size: 100% 100%;
+	width: 50px;
+	height: 50px;
 }
 
 #settings{
 	display: none;
 	background-image:url("ciocolata.jpg");
-	text-align: center;
+	min-height: 90vh;
+	padding-top: 20vh;
+	font-size: 30px;
+
+
 }
 
+#settings input, #settings select{
+	font-size: 30px;
+	border: 2px solid blue;
+}
+
+.wrapper{
+
+	margin: auto;
+	background: #fff;
+	width: 50%;
+}
+
+.row{
+	margin-top: 30px;
+}
+
+#settings label, input, select{
+	margin-left: 50px;
+}
+
+@media screen and (max-width: 990px) {
+  table td {
+   	width: 10vw;
+	height: 10vw;
+  }
+  table td button {
+    width: 10vw;
+	height: 10vw;
+  }
+
+  #bombImage{
+  	width: 10vw;
+	height: 10vw;
+  }
+
+  #gameBar{
+  	width: 70%;
+  }
+
+  #settings{
+  	padding-top: 10vh;
+  }
+
+  .wrapper{
+  	width:80%;
+  }
+
+  #settings label, input, select{
+	margin-left: 30px;
+  }
+
+
+
+}
