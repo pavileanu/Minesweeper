@@ -1,5 +1,7 @@
 var matrixTable, mineTable, allMines, flaggedMines, numberOfFlaggedMines;
-var lines = 8, columns = 8, minesNumber=11;
+var lines = sessionStorage.getItem("lines") || 8, 
+	columns = sessionStorage.getItem("columns") || 8, 
+	minesNumber = sessionStorage.getItem("minesNumber") || 11;
 var isGamePaused=0, timerId;
 var CULOARE_BUTON = "#f2c55c";
 var CULOARE_TD= "#cbd1cd"; 

@@ -16,15 +16,22 @@ main{
 	height: 100%;
 }
 
+main #header {
+	color: #fff;
+	font-size: 50px;
+	font-weight: 600;
+	text-align: center;
+}
+
 main input{
 	display: block;
 	background: #3d3d38;
-	font-size: 50px;
+	font-size: 30px;
 	color: yellow;
 	border-radius: 10px;
 	padding: 30px;
 	width: 300px;
-	margin-top: 70px;
+	margin: 70px 0 0 0;
 }
 
 table{
@@ -97,33 +104,66 @@ table td{
 
 #settings{
 	display: none;
-	background-image:url("ciocolata.jpg");
 	min-height: 90vh;
 	padding-top: 20vh;
 	font-size: 30px;
-
+	border-radius: 30px;
 
 }
 
 #settings input, #settings select{
 	font-size: 30px;
-	border: 2px solid blue;
+	display: inline-block
+}
+
+.rowInputs {
+	border: 1px solid black;
+	display: inline-block;
+	text-align:center;
+	padding: 5px;
+}
+
+.rowButtons {
+	background: #008CBA;
+	color: white;
+	border-radius: 10px;
+	padding: 15px;
+	cursor: pointer;
 }
 
 .wrapper{
 
 	margin: auto;
-	background: #fff;
+	background: aliceblue;
+	border-radius: 50px;
 	width: 50%;
 }
 
+.wrapper span {
+	display: inline-block;
+	width: 40%;
+	text-align: center;
+}
+
 .row{
-	margin-top: 30px;
+	padding: 30px;
 }
 
 #settings label, input, select{
 	margin-left: 50px;
 }
+
+#gameMessage {
+	display: block;
+	color: black;
+	text-align: center;
+	width: 30%;
+	margin: 5 auto;
+	background: white;
+	padding: 15px;
+	font-size: 20px;
+	font-weight: 600;
+  }
 
 @media screen and (max-width: 990px) {
   table td {
@@ -154,6 +194,10 @@ table td{
 
   #settings label, input, select{
 	margin-left: 30px;
+  }
+
+  .rowButtons {
+	margin-bottom: 30px;
   }
 
 

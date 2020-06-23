@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<title>Minesweeper Free</title>
 		<link rel="stylesheet" type="text/css" href="minesweeper.css">
 		<script src="home.js" type="text/javascript" language="javascript"></script>
 		<script src="gameTimer.js" type="text/javascript" language="javascript"></script>
@@ -15,12 +16,14 @@
 	<body>
 
 		<main id="menu">
+			<h1 id="header">Minesweeper Free</h1>
 			<input id="startButton" type="button" value="Start" onClick="startGame()">
 			<input  id="settingsButton" type="button" value="Settings" onclick="openSettings()">
 		</main>
 
 		<section id="settings">
 			<div class = "wrapper">
+				<!--
 				<div class="row">
 					<label for="themeSelect">Theme</label>         
 					<select id="themeSelect">
@@ -28,19 +31,20 @@
 						<option value="2">Extra Theme</option>
 					</select>
 				</div>
+				-->
 
 				<div class="row">
-					<label for="nrLines">Lines</label><input type ="number" style="display: inline-block;" min="2" max="99"  maxlength="2" id="nrLines">
+					<span>Lines</span><input type ="number" class="rowInputs"  min="2" max="99"  maxlength="2" id="nrLines">
 				</div>
 				<div class="row">
-					<label for="nrColumns">Columns</label><input type ="number" style="display: inline-block;" min="2" max="99" maxlength="2" id="nrColumns">
+					<span>Columns</span><input type ="number" class="rowInputs"  min="2" max="99" maxlength="2" id="nrColumns">
 				</div>
 				<div class="row">
-					<label for="nrMines">Mines</label><input type ="number" style="display: inline-block;" min="2" max="99" maxlength="2" id="nrMines">
+					<span>Mines</span><input type ="number" class="rowInputs" max="99" min="2" maxlength="2" id="nrMines">
 				</div>
 				<div class="row">
-					<input type="button" onClick="setGameSettings();settingsToMainMenu()" value="Submit">
-					<input type="button" onClick="settingsToMainMenu()" value="Main Menu">
+					<input type="button" class="rowButtons" onClick="setGameSettings();settingsToMainMenu()" value="Submit">
+					<input type="button" class="rowButtons" onClick="settingsToMainMenu()" value="Main Menu">
 				</div>
 			</div>
 		</section>

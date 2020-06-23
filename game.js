@@ -6,6 +6,11 @@ function startGame(){
 	gameBar.setAttribute("id", "gameBar");
 	body.appendChild(gameBar);
 
+	var gameMessage = document.createElement("p");
+	gameMessage.setAttribute("id", "gameMessage");
+	gameMessage.style.display = "none";
+	body.appendChild(gameMessage);
+
 
 	createNewGameButton();
 	createGameTimerTextBox();
@@ -25,9 +30,11 @@ function removeGame(){
 	var body=document.getElementsByTagName("body")[0];
 	var matrixTable=document.getElementById("matrixTable");
 	var gameBar = document.getElementById("gameBar");
+	var gameMesage = document.getElementById("gameMesssage");
 
 	body.removeChild(matrixTable);
 	body.removeChild(gameBar);
+	body.removeChild(gameMessage);
 
 }
 
@@ -51,13 +58,13 @@ function winTest()
 
   if(winTestFlag){    
     showMineTable();
-    alert("Ati trecut jocu in " + gameTimeBox.value);
+    setGameMessage("You passed the game in " + gameTimeBox.value);
     clearInterval(timerId);
   }
 }
 
 function loose(){
-  alert("noob!");
+  setGameMessage("You lost!")
   showMineTable();
   clearInterval(timerId);
   var gameMatrix = document.getElementById("matrixTable");
@@ -101,5 +108,11 @@ function createMainMenuButton(){
 	//x.setAttribute("value","Exit");
 	x.setAttribute("id","mainMenu");
 	gameBar.appendChild(x);
+}
+
+function setGameMessage(message) {
+	var gameMessage = document.getElementById('gameMessage');
+	gameMessage.innerText = message;
+	gameMessage.style.display = "block";
 }
 
