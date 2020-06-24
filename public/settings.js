@@ -9,7 +9,7 @@ function setGameSettings(){
 
 	lines = sessionStorage.getItem("lines"); 
 	columns = sessionStorage.getItem("columns");
-	minesNumber = sessionStorage.getItem("minesNumber");
+	minesNumber = sessionStorage.getItem("nrMines");
 
 	if(!(lines == parseInt(lines, 10)))
 		lines = 8;

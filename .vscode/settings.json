@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/a4d5b55a-6532-440c-a07e-2d9c73f1a84b/resourceGroups/MyProfile/providers/Microsoft.Web/sites/minesweeperfree",
+    "appService.deploySubpath": "."
+}
